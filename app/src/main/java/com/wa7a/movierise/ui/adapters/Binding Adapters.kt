@@ -45,10 +45,10 @@ fun <T> View.showWhenSuccess(state: State<T>?) {
 }
 
 @BindingAdapter("setItems")
-fun RecyclerView.setRecyclerItems(items: List<Movie>?) {
+fun <T>RecyclerView.setRecyclerItems(items: List<T>?) {
     if (items != null) {
-        (this.adapter as MovieAdapter).setItems(items)
+        (this.adapter as BaseAdapter<T>?)?.setItems(items)
     }else{
-        (this.adapter as MovieAdapter).setItems(emptyList())
+        (this.adapter as BaseAdapter<T>?)?.setItems(emptyList())
     }
 }
